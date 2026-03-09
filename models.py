@@ -25,7 +25,10 @@ class Menu:
         self.items.append(item)
     
     def filter_by_category(self, category: str) -> list:
-        """Return all items matching the specified category."""
+        """Return all items matching the specified category.
+        
+        Returns an empty list if no items match the category.
+        """
         return [item for item in self.items if item.category == category]
 
 
@@ -44,7 +47,10 @@ class Order:
         self.items.append(item)
     
     def compute_total(self) -> float:
-        """Calculate and return the total cost of all items in the order."""
+        """Calculate and return the total cost of all items in the order.
+        
+        Returns 0.0 if the order is empty.
+        """
         return sum(item.price for item in self.items)
 
 
@@ -63,5 +69,9 @@ class Customer:
         self.purchase_history.append(order)
     
     def verify_user(self) -> bool:
-        """Verify the user has made at least one purchase."""
+        """Verify the user has made at least one purchase.
+        
+        Returns True if purchase_history is non-empty, False otherwise.
+        """
         return len(self.purchase_history) > 0
+
